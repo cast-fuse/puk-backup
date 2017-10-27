@@ -3,6 +3,10 @@
 # script to run when EC2 instance first boots
 # add this when provisioning EC2 instance
 
+yum -y update
+
+cd /home/ec2-user
+
 # downloads and links heroku toolbelt
 curl -O https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz
 tar -xvzf heroku-cli-linux-x64.tar.gz
@@ -12,7 +16,6 @@ ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
 rm -rf heroku-cli-linux-x64.tar.gz
 
 # syncs backup scripts folder to instance
-cd /home/ec2-user
 aws s3 sync s3://parkinsons-and-me-db-backups/backup-scripts ./backup-scripts
 
 # moves .netrc heroku login info to correct location

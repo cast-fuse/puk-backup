@@ -10,7 +10,7 @@ mkdir -p "/home/ec2-user/tmp/backups"
 curl $BACKUP_URL | gzip -c > "/home/ec2-user/tmp/backups/$FILE_NAME.gz"
 
 # uploads the db file to s3
-aws s3 cp "/home/ec2-user/tmp/backups/$FILE_NAME.gz" s3://parkinsons-and-me-db-backups
+aws s3 cp "/home/ec2-user/tmp/backups/$FILE_NAME.gz" s3://parkinsons-and-me-db-backups/backups/
 
 # cleanup
 rm -rf "/home/ec2-user/tmp"
